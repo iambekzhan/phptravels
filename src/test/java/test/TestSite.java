@@ -4,6 +4,7 @@ import net.phptravels.page.FirstHomePage;
 import net.phptravels.page.HotelPage;
 import net.phptravels.page.LoginPage;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -42,9 +43,13 @@ public class TestSite {
         HotelPage hp = new HotelPage();
         hp.threeStar.click();
 
-        Actions action = new Actions(driver);
+//        Actions action = new Actions(driver);
 //        action.dragAndDrop(hp.scale, hp.scale1).perform();
-        action.clickAndHold(hp.scale).moveToElement(hp.scale1).build().perform();
+//        action.clickAndHold(hp.scale).moveToElement(hp.scale1).build().perform();
+
+        Actions move = new Actions(driver);
+        Action action = (Action) move.dragAndDropBy(hp.scale, -118, 0).build();
+        action.perform();
 
 
 //        fHome.myAccountBtn.click();
